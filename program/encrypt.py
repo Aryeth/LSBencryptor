@@ -28,14 +28,15 @@ newImageName=f'./output/out.png'
 newImage=Image.new(imgsrc.mode, imgsrc.size)
 newPixels=newImage.load()
 ##Creating a new image in the output, with the same pixels as the basic one, then loading it.
-b=0
+q=0
 for x in range(width):
     for y in range(height):
         if(y==0):
-            if(b<=len(k2)-1):
-                newPixels[x,y]=k2[b]
+            if(q<=len(k2)-1):
+                r, g, b =tuple(imgsrc.getpixel((x,y)))
+                newPixels[x,y]=k2[q], g, b 
                 print('newpixel value: ', newPixels[x,y])
-                b+=1
+                q+=1
                 ##changing the pixels of the first rows, putting the message on the red part of the pixel. I could let the old values for green and blue but maybe later cuz Im lazy.
             else:
                  newPixels[x,y]=imgsrc.getpixel((x,y))

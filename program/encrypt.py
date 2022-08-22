@@ -5,6 +5,7 @@ k2=[]
 
 for i in key:
     k2.append(ord(i))
+    print(ord(i))
 #transforming the key in an unicode list.
 
 imgsrc=Image.open('input/in.png')
@@ -27,14 +28,14 @@ newImageName=f'./output/out.png'
 newImage=Image.new(imgsrc.mode, imgsrc.size)
 newPixels=newImage.load()
 ##Creating a new image in the output, with the same pixels as the basic one, then loading it.
-b=len(k2)-1
+b=0
 for x in range(width):
     for y in range(height):
         if(y==0):
-            if(b>=0):
+            if(b<=len(k2)-1):
                 newPixels[x,y]=k2[b]
                 print('newpixel value: ', newPixels[x,y])
-                b-=1
+                b+=1
                 ##changing the pixels of the first rows, putting the message on the red part of the pixel. I could let the old values for green and blue but maybe later cuz Im lazy.
             else:
                  newPixels[x,y]=imgsrc.getpixel((x,y))
